@@ -1,0 +1,31 @@
+{% extends "index/base.html" %}
+{% block title %}Erha - Reliable AC & Heating Solutions{% endblock %}
+
+
+{% block content %}
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-semibold mb-6">Products</h1>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      {% for urun in latest_urunler_list %}
+      <article class="bg-white rounded-lg overflow-hidden shadow-sm">
+        <a href="{% url 'urunler-detail' urun.id %}">
+          {% if urun.urun_resim %}
+          <img src="{{ urun.urun_resim.url }}" alt="{{ urun.urun_adi }}" class="w-full h-44 object-cover">
+          {% else %}
+          <div class="w-full h-44 bg-(--muted-background) flex items-center justify-center text-(--muted-foreground)">No image</div>
+          {% endif %}
+        </a>
+        <div class="p-4">
+          <div class="flex items-center justify-between text-xs text-(--muted-foreground) mb-2">
+            <span>{{ urun.urun_marka }}</span>
+            <span class="rounded-full bg-(--muted-background) px-3 py-1 text-(--muted-foreground)">Enerji sinifi: {{ urun.urun_enerji_sinifi }}</span>
+          </div>
+          <h3 class="text-lg font-medium"><a href="{% url 'urunler-detail' urun.id %}">{{ urun.urun_adi }}</a></h3>
+          <p class="text-sm text-(--muted-foreground) mt-2">{{ urun.urun_aciklama|truncatewords:15 }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </main>
+{% endblock %}

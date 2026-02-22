@@ -1,0 +1,144 @@
+{% extends "index/base.html" %}
+
+{% block title %}Erha - Reliable AC & Heating Solutions{% endblock %}
+
+{% block content %}
+
+<section id="3hLulQpocWc7ZYbV"><div id="hero" class="relative bg-[var(--background)]">
+  <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
+    <div class="px-6 pb-24 pt-10 sm:pb-32 lg:col-span-7 lg:px-0 lg:pb-48 lg:pt-40 xl:col-span-6">
+      <div class="mx-auto max-w-lg lg:mx-0">
+        <img class="h-11" src="https://cdn.sitespark.ai/generic-logos/generic_logo_2.svg" alt="Erha Logo">
+        <div class="hidden sm:mt-32 sm:flex lg:mt-16">
+          <div class="relative rounded-full px-3 py-1 text-sm/6 text-[var(--muted-foreground)] ring-1 ring-[var(--border)] hover:ring-[var(--border)]">
+            Erhayi kesfedin <a href="/hakkimizda" class="whitespace-nowrap font-semibold text-[var(--primary-background)]"><span class="absolute inset-0" aria-hidden="true"></span>Hakkimizda <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+        <h1 class="mt-24 text-pretty text-5xl font-semibold tracking-tight text-[var(--foreground)] sm:mt-10 sm:text-7xl">Reliable AC & Heating Solutions for Every Season</h1>
+        <p class="mt-8 text-pretty text-lg font-medium text-[var(--muted-foreground)] sm:text-xl/8">Erha provides top-tier air conditioning and heating units, ensuring perfect climate control and energy efficiency. Discover our range of innovative products and expert services.</p>
+        <div class="mt-10 flex items-center gap-x-6">
+          <a href="/urunler" class="rounded-md bg-[var(--primary-background)] px-3.5 py-2.5 text-sm font-semibold text-[var(--primary-foreground)] shadow-sm hover:bg-[var(--primary-background)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary-background)]">Urunlerimizi kesfedin</a>
+          <a href="#contact" class="text-sm/6 font-semibold text-[var(--foreground)]">Iletisim ve Adres <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="relative lg:col-span-5 lg:-mr-8 xl:absolute xl:inset-0 xl:left-1/2 xl:mr-0">
+      <img class="aspect-[3/2] w-full bg-[var(--muted-background)] object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" src="https://cdn.sitespark.ai/images/1b4bcdf0-e937-4ade-8dad-f467f25ea6f2/423305559.jpg" alt="Modern Living Room with Erha Air Conditioning">
+    </div>
+  </div>
+</div></section><section id="sRpPef6trDhnoD1T"><div id="top-products" class="bg-[var(--background)] py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-balance text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">Yeni gelenler</h2>
+      <p class="mt-2 text-lg/8 text-[var(--muted-foreground)]">Discover the most popular and efficient AC and heating units chosen by our customers.</p>
+    </div>
+    <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+      {% for urun in top_products %}
+      <article class="flex flex-col items-start justify-between">
+        <div class="relative w-full">
+          {% if urun.urun_resim %}
+          <a href="{% url 'urunler-detail' urun.id %}">
+            <img src="{{ urun.urun_resim.url }}" alt="{{ urun.urun_adi }}" class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] object-cover sm:aspect-[2/1] lg:aspect-[3/2]">
+          </a>
+          {% else %}
+          <a href="{% url 'urunler-detail' urun.id %}">
+            <div class="aspect-video w-full rounded-2xl bg-[var(--muted-background)] flex items-center justify-center text-[var(--muted-foreground)]">No image</div>
+          </a>
+          {% endif %}
+          <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-[var(--border)]"></div>
+        </div>
+        <div class="max-w-xl">
+          <div class="mt-8 flex items-center gap-x-4 text-xs">
+            <span class="text-[var(--muted-foreground)]">{{ urun.urun_marka }}</span>
+            <a href="{% url 'urunler-detail' urun.id %}" class="relative z-10 rounded-full bg-[var(--muted-background)] px-3 py-1.5 font-medium text-[var(--muted-foreground)] hover:bg-[var(--muted-background)]">Enerji sinifi: {{ urun.urun_enerji_sinifi }}</a>
+          </div>
+          <div class="group relative">
+            <h3 class="mt-3 text-lg/6 font-semibold text-[var(--foreground)] group-hover:text-[var(--muted-foreground)]">
+              <a href="{% url 'urunler-detail' urun.id %}">
+                <span class="absolute inset-0"></span>
+                {{ urun.urun_adi }}
+              </a>
+            </h3>
+            <p class="mt-5 line-clamp-3 text-sm/6 text-[var(--muted-foreground)]">{{ urun.urun_aciklama|truncatewords:20 }}</p>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</div></section>
+
+<!-- Logos / Partners section: replace src values with your logo files -->
+<section id="partners" class="bg-[var(--background)]">
+  <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-2xl font-semibold text-[var(--foreground)]">Partnerlerimiz</h2>
+      <p class="mt-2 text-sm text-[var(--muted-foreground)]">Trusted by industry-leading brands</p>
+    </div>
+    <div class="mt-8 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5 items-center">
+      <div class="flex items-center justify-center p-4">
+        <img src="/media/site/bosch_logo.png" alt="Bosch" class="h-12 object-contain" />
+      </div>
+      <div class="flex items-center justify-center p-4">
+        <img src="/media/site/demirdokum_logo.png" alt="Demirdokum" class="h-12 object-contain" />
+      </div>
+      <div class="flex items-center justify-center p-4">
+        <img src="/media/site/eca_logo.png" alt="ECA" class="h-12 object-contain" />
+      </div>
+      <div class="flex items-center justify-center p-4">
+        <img src="/media/site/vaillant_logo.png" alt="Vaillant" class="h-12 object-contain" />
+      </div>
+      <div class="flex items-center justify-center p-4">
+        <img src="/media/site/viessmann_logo.png" alt="Viessmann" class="h-12 object-contain" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="YfAj4wB4gMDFmxwq"><div id="contact" class="relative bg-[var(--background)]">
+  <div class="mx-auto max-w-7xl lg:flex lg:justify-between lg:px-8 xl:justify-end">
+    <div class="lg:flex lg:w-1/2 lg:shrink lg:grow-0 xl:absolute xl:inset-y-0 xl:right-1/2 xl:w-1/2">
+      <div class="relative h-80 lg:-ml-8 lg:h-auto lg:w-full lg:grow xl:ml-0">
+        <img class="absolute inset-0 size-full bg-[var(--muted-background)] object-cover" src="https://cdn.sitespark.ai/images/1b4bcdf0-e937-4ade-8dad-f467f25ea6f2/423305567.jpg" alt="Modern Bright Living Room with Erha AC Unit">
+      </div>
+    </div>
+    <div class="px-6 lg:contents">
+      <div class="mx-auto max-w-2xl pb-24 pt-16 sm:pb-32 sm:pt-20 lg:ml-8 lg:mr-0 lg:w-full lg:max-w-lg lg:flex-none lg:pt-32 xl:w-1/2">
+        <p class="text-base/7 font-semibold text-[var(--primary-background)]">Our Story</p>
+        <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl">Iletisim ve Adres</h1>
+        <p class="mt-6 text-xl/8 text-[var(--muted-foreground)]">At Erha, we believe that perfect indoor climate control is essential for a comfortable home or business. With years of experience, we've dedicated ourselves to providing top-quality AC and heating units, coupled with unparalleled service.</p>
+        <div class="mt-10 max-w-xl text-base/7 text-[var(--muted-foreground)] lg:max-w-none">
+          <p>Our journey began with a simple mission: to deliver reliable, efficient, and innovative climate solutions that stand the test of time. We understand the importance of a properly functioning HVAC system, not just for comfort, but for energy efficiency and air quality. That's why we meticulously select our products and train our technicians to the highest standards.</p>
+          <ul role="list" class="mt-8 space-y-8 text-[var(--muted-foreground)]">
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--primary-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 0 1-1.44-8.765 4.5 4.5 0 0 1 8.302-3.046 3.5 3.5 0 0 1 4.504 4.272A4 4 0 0 1 15 17H5.5Zm3.75-2.75a.75.75 0 0 0 1.5 0V9.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Expert Installation.</strong> Our certified technicians ensure your new AC or heating unit is installed flawlessly for optimal performance and longevity.</span>
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--primary-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Energy Efficiency.</strong> We offer a range of high-efficiency models designed to reduce your energy consumption and lower utility bills.</span>
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="mt-1 size-5 flex-none text-[var(--primary-background)]" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
+                <path d="M4.632 3.533A2 2 0 0 1 6.577 2h6.846a2 2 0 0 1 1.945 1.533l1.976 8.234A3.489 3.489 0 0 0 16 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234Z" />
+                <path fill-rule="evenodd" d="M4 13a2 2 0 1 0 0 4h12a2 2 0 1 0 0-4H4Zm11.24 2a.75.75 0 0 1 .75-.75H16a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V15Zm-2.25-.75a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75h-.01Z" clip-rule="evenodd" />
+              </svg>
+              <span><strong class="font-semibold text-[var(--foreground)]">Comprehensive Maintenance.</strong> Regular servicing plans to keep your systems running smoothly, preventing breakdowns and extending lifespan.</span>
+            </li>
+          </ul>
+          <p class="mt-8">We pride ourselves on our customer-centric approach, offering personalized solutions tailored to your specific needs and budget. From initial consultation to ongoing support, Erha is your trusted partner for all things AC and heating.</p>
+          <h2 class="mt-16 text-2xl font-bold tracking-tight text-[var(--foreground)]">Servislerimiz</h2>
+          <p class="mt-6">Our commitment extends beyond just sales and installation. We offer emergency repair services, preventative maintenance, and expert advice to ensure your indoor environment remains perfect year-round. Choose Erha for peace of mind and reliable climate control.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+{% endblock %} # Content block end

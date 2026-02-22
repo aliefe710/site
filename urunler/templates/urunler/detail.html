@@ -1,0 +1,36 @@
+{% extends "index/base.html" %}
+{% block title %}Erha - Reliable AC & Heating Solutions{% endblock %}
+
+
+{% block content %}
+	<main class="max-w-7xl mx-auto px-6 py-12">
+		<a href="/urunler/" class="rounded-full bg-(--muted-background) px-3 py-1 text-sm text-(--muted-foreground) hover:underline">&larr; Back to products</a>
+		<div class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+			<div class="w-full bg-(--muted-background) rounded-lg overflow-hidden">
+				{% if urun.urun_resim %}
+				<img src="{{ urun.urun_resim.url }}" alt="{{ urun.urun_adi }}" class="w-full h-96 object-cover">
+				{% else %}
+				<div class="w-full h-96 flex items-center justify-center text-(--muted-foreground)">No image</div>
+				{% endif %}
+			</div>
+			<div>
+				<h1 class="text-3xl font-bold">{{ urun.urun_adi }}</h1>
+				<div class="mt-3 flex items-center gap-x-3 text-sm text-(--muted-foreground)">
+					<span>{{ urun.urun_marka }}</span>
+					<span class="rounded-full bg-(--muted-background) px-3 py-1">Enerji sinifi: {{ urun.urun_enerji_sinifi }}</span>
+				</div>
+				<div class="mt-6">
+					<span class="text-2xl font-semibold text-(--primary-background)">{{ urun.urun_fiyat }} TL</span>
+				</div>
+				<div class="mt-6 text-(--muted-foreground)">
+					<p>{{ urun.urun_aciklama }}</p>
+				</div>
+				<div class="mt-6 flex items-center gap-x-4">
+					<a href="/#footer" class="inline-block rounded-md bg-[var(--primary-background)] px-4 py-2 text-sm font-semibold text-[var(--primary-foreground)]">Iletisim</a>
+					<a href="mailto:info@example.com" class="text-sm text-(--muted-foreground)">Email yaz</a>
+				</div>
+				<div class="mt-6 text-sm text-(--muted-foreground)">Yayinlanma tarihi: {{ urun.urun_yayinlanma_tarihi|date:"d M Y" }}</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

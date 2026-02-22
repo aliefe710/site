@@ -1,0 +1,19 @@
+venv\Scripts\activate
+python -m pip install --upgrade pip
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+py manage.py shell
+
+python manage.py check
+py manage.py makemigrations
+python manage.py migrate
+
+python manage.py runserver
+
+mysite is the project folder
+
+part 3 min 10
+
+
+npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch
+npx @tailwindcss/cli -i ./index/static/index/input.css -o ./index/static/index/base.css --watch
